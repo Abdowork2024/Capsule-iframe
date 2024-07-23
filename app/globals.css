@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: m;
+  src: url("/font.woff");
+  src: url("/font.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer components {
+  body {
+    font-family: m, monospace;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  a,
+  button,
+  select {
+    @apply focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500;
+  }
+
+  .player-button {
+    @apply flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-black sm:h-16 sm:w-16;
+    box-shadow:
+      inset 0px 3px 2px rgba(255, 255, 255, 0.25),
+      0px 2px 4px rgba(0, 0, 0, 0.35);
+    transition:
+      transform,
+      box-shadow 150ms;
+  }
+
+  .player-button:active {
+    transform: scale(0.98);
+    box-shadow:
+      inset 0px 0px 0px rgba(255, 255, 255, 0.25),
+      0px 0px 0px rgba(0, 0, 0, 0.35);
+  }
+
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 200ms ease-in-out forwards;
+  }
+
+  .fade-in-delayed {
+    opacity: 0;
+    animation: fadeIn 200ms ease-in-out 250ms forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-top: solid transparent 1px;
+    border-bottom: solid transparent 1px;
+    background-color: var(--fg-color-secondary);
+    background-clip: content-box;
+  }
+}
